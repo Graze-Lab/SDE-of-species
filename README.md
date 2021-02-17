@@ -17,7 +17,7 @@ We examined the expression of female and male in eight related Drosophila specie
 For a specific gene(FlybaseID or Gene Symbol), our script will provide 
 1) Gene expression in female and male (Normalized_TPM) within Species 
 2) Difference in the gene expression across the species
-3) Fold change in 
+3) Fold change
 4) P values for difference between male and female
 5) Log2(male/Female) ratio 
 6) What are the interactive pathways the SD genes are related
