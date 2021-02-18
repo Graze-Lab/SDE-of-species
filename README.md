@@ -22,5 +22,11 @@ For a specific gene(FlybaseID or Gene Symbol), our script will provide
 6) What are the interactive pathways the SD genes are related
 
 ### Plan of Action 
+- download publically available RNA-seq data
+- recreate output using bioinformatics pipeline as originally outlined in Yang et al. 2018
+- obtain single file of read acounts amongst sex and species
+- create a script that outputs parameters as outlined in "Objectives" based on the data in the read count file
 
 ### Expected Output
+- A processed and normalized file of read counts
+- a pdf report displaying the parameters of interest to the user
