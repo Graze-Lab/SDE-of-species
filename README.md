@@ -80,6 +80,18 @@ Show the clean data file Final with ID.
 ##Walk Through the Codes:
 We will add how to use the codes in a step-by-step manner. 
 
+##### Step1: Data download
+we used the `panda` for the duplication `columns.intersection`.
+##### Step2: Data clean up
+```
+#### Create Dataframe:
+import pandas as pd
+import numpy as np
+```
+##### Step3: Ortholog Identification 
+##### Step4: Calculate the significantly sex-biased gene expression
+##### Step5:
+
 
 
 ## Class demonstration for the SFB-students (last 3 Mins of the Presentation) 
