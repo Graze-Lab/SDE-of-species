@@ -89,6 +89,7 @@ import pandas as pd
 import numpy as np
 ```
 ##### Step3: Ortholog Identification 
+[Code to remove.py](https://github.com/Graze-Lab/SDE-of-species/blob/57e0384f8c35f6f8341bc2a6efccaa6bdac522dd/keep-common-values-matched-cols.py)
 ##### Step4: Calculate the significantly sex-biased gene expression
 ##### Step5:
 
