@@ -160,16 +160,20 @@ Finally, we are demonstrating the differentally expressed (382genes) immune-defe
 ## Class demonstration for the SFB-students
 **Students will choose a single gene *(For example, SYMBOL == "Gs1")* by symbol and they will able to see the gene expression of the gene within and across two Drosophila species.**
 
-Please download the file [here](https://github.com/Graze-Lab/SDE-of-species/blob/8e75258557452868b1a995c6ec30e9528441aa69/B.Class_demo.Rmd)
+#### Please download the files from chat box.
+
+File 1:Class_demo.Rmd
+File 2:Final_IDs_dmel_nrc_gene_fc_logration_wb_mf.csv
+File 3:Final_ID_dana_with_dmel_Ensemble_Symbol_removed_NA.csv
 
 #### Class Exercise
 
-Run the file in R studio by click on **knit**
-Choose File **Final_IDs_dmel_nrc_gene_fc_logration_wb_mf** for **MODEL Organism**
-Choose File **Final_ID_dana_with_dmel_Ensemble_Symbol_removed_NA** for **NON-MODEL Organism**
-Generate Plot for the Gene
+1. Run the file in R studio by click on **knit**
+2. Choose File at First Step2 **Final_IDs_dmel_nrc_gene_fc_logration_wb_mf** for **MODEL Organism**
+3. Choose File at First Step3 **Final_ID_dana_with_dmel_Ensemble_Symbol_removed_NA** for **NON-MODEL Organism**
+4. Generate Plot for the Gene
 
-####Optional Steps
+####Optional
 Change Gene Symbol in **STEP4**
 *Step4: Choose Your Gene and Replace in the SYMBOL == "Gs1"*
 
