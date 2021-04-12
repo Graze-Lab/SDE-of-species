@@ -42,6 +42,8 @@ In general, the analysis demonstrates the male and female biased constitutive GE
 
 ![Figure 1 Differential Gene Expression in *D. melanogaster* and *Drosophila ananassae* at log2FoldChange >1 (pval<0.05)](https://github.com/Graze-Lab/SDE-of-species/blob/a6debd33fdac4c775caefa35520a9b277481016f/Figure1_MF_1FoldChange0.05.png)
 
+**Figure 1 Differential Gene Expression in *D. melanogaster* and *Drosophila ananassae* at log2FoldChange >1 (pval<0.05)**
+
 #### 3.2 Sex dimorphism in gene expression of a Single Gene (Krista Task1)
 Figure 2
 
