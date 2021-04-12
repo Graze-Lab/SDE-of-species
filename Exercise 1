@@ -1,8 +1,0 @@
-### Classwork (demonstration) for the SFB2021
-
-Navigate the gene expression for the students. Specifically, 
-students will choose a single gene by symbol and they will able to see the gene expression of 
-the gene within and across the Drosophila species.
-
-We need a separate R markdown file for the students to walk through the code.
-
