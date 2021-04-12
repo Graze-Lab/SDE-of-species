@@ -47,7 +47,7 @@ N.B. We showed only two species data not the 8 species.
 #### 3.2 Sex dimorphism in gene expression of a Single Gene
 
 
-![Figure 2] (https://github.com/Graze-Lab/SDE-of-species/blob/a6debd33fdac4c775caefa35520a9b277481016f/Figure1_MF_1FoldChange0.05.png)
+![Figure 2](https://github.com/Graze-Lab/SDE-of-species/blob/a6debd33fdac4c775caefa35520a9b277481016f/Figure1_MF_1FoldChange0.05.png)
 
 **Figure 2 Differential Gene Expression in *D. melanogaster* and *Drosophila ananassae* for a single gene (pval<0.05)**
 
