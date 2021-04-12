@@ -36,9 +36,11 @@ The immune response in the diecious organism has been reported sex dimorphic for
 
 ### Results:
 
-#### 3.1 Sex dimorphism in gene expression (Krista Task2) Figure 1
+#### 3.1 Sex dimorphism in gene expression
 The gene expression analysis across the three Drosophila species found the marked difference across the male and female biased gene expression.
 In general, the analysis demonstrates the male and female biased constitutive GEs in not conserved across the closed related species.
+
+![Figure 1] (https://github.com/Graze-Lab/SDE-of-species/blob/a6debd33fdac4c775caefa35520a9b277481016f/Figure1_MF_1FoldChange0.05.png)
 
 #### 3.2 Sex dimorphism in gene expression of a Single Gene (Krista Task1)
 Figure 2
