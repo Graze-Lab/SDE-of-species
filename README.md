@@ -45,7 +45,7 @@ Figure 2
 
 #### Heatmap of the DE immune genes in the dmel
 
-![heatmap of immune genes](https://github.com/Graze-Lab/SDE-of-species/blob/7372846f8dbb05f31ae8c0bf5773579a689721bd/heatmap.png)
+
 
 #### 3.3 Enrichment of the Gene Ontology terms (Immune Genes)
 Figure 3
@@ -75,6 +75,8 @@ Show the clean data file Final with ID.
 
 # Walk Through the Codes:
 To determine the sex dimorphic gene expression at the constitutive level in Drosophila species we are using data from the [Yang et al. 2018](https://www.life-science-alliance.org/content/1/6/e201800156). In the analysis we need to concern about model and non-model organisms as *D. melanogater*(dmel) is the model organism we are using dmel as reference to perform the analysis for non-model species. We are adding geneID(ensembl ID ) and gene symbol of the dmel to all nonmodel (such as *Drosophila ananassae* dana).
+
+## Part1 Sex-dimorphic Gene Expression Determination (For All Genes) 
 
 ##### Step1: Data download
 We downloaded the data from the [NCBI_GSE99574](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE99574) in and unzip.
@@ -134,10 +136,44 @@ lost_gene
 ```
 **N.B.** There some dana genes do not have dmel orthologs.
 
-##### Step4: Calculate the significantly sex-biased gene expression
-##### Step5:
+## Part2 Sex-dimorphic Gene Expression Determination (For Immune Genes)
 
+##### Step2.1: Immune and defense gene identification in Flybase
+We downloaded the data from the [Flybase](http://flybase.org/) for the dmel andother species. The ortholog info of the other non-model organism idicated all the other-species drosophila immune genes are present in model organism drosophila data. Thus, we used ony the dmel immune genes(591) and defense genes(432). From the previous references we know that there is some common genes in these two lists. we are cleaning the data in the following steps.  
 
+##### Step2.2: Merge the immune and defense gene list
+
+We perfomed the merging of the two `txt` files by using [merge.py](https://github.com/Graze-Lab/SDE-of-species/blob/68a5ad6ad860770d5eabaf45e0c363ab630a303c/merge.py). 
+
+##### Step2.3: Keep only unique immune and defense genes
+
+The output of the [merge.py](https://github.com/Graze-Lab/SDE-of-species/blob/68a5ad6ad860770d5eabaf45e0c363ab630a303c/merge.py) is used as input for [remove-duplicates.py](https://github.com/Graze-Lab/SDE-of-species/blob/68a5ad6ad860770d5eabaf45e0c363ab630a303c/remove-duplicates.py). we used the `panda(drop_duplicates)` to remove the duplicates in the genes. 
+
+```
+#### Create Dataframe:
+import pandas as pd
+import numpy as np
+# Import data from .csv file
+df = pd.read_csv('C.search-immune-defense-dmel-FlyBase_IDs.txt', delimiter = "\t")
+df1 = df.drop_duplicates()
+df1.to_csv('D.search-immune-defense-unique-dmel.csv', index=False)
+```
+##### Step2.4: Keep only unique immune and defense genes
+
+After getting the unique immune-defense gene list we mactched the genes with **PART1** final file to have only the immune-defense gene exression in male and female.
+We used the `panda` to perform the matching based on col values in [keep-common-values-matched-cols.py](https://github.com/Graze-Lab/SDE-of-species/blob/68a5ad6ad860770d5eabaf45e0c363ab630a303c/keep-common-values-matched-cols.py)
+
+```
+match=df2.columns.intersection(df1.columns).tolist() #finds matching cols in both df
+df3 = df2.merge(df1,on=match).reindex(df2.columns,axis=1) #merge and reindex to df2.columns
+```
+
+##### Step2.5: Visualization of the gene expressioin (heatmap)
+Finally, we are demonstrating the differentally expressed (382genes) immune-defense gene expression in male and female by using a one col based heatmap [heatmap](https://github.com/Graze-Lab/SDE-of-species/blob/e1571db51325f572ff366a0f89913382229c5a2d/heatmap-with-one-data.R). 
+
+![heatmap of immune genes](https://github.com/Graze-Lab/SDE-of-species/blob/7372846f8dbb05f31ae8c0bf5773579a689721bd/heatmap.png)
+
+**N.B.** We removed 11 genes which expressed only in male or female. Giving inf for log2FoldChanges
 
 ## Class demonstration for the SFB-students (last 3 Mins of the Presentation) 
 Navigate the gene expression for the students. Specifically, students will choose a single gene by symbol and they will able to see the gene expression of the gene within and across the Drosophila species.
