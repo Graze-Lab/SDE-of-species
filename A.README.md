@@ -44,12 +44,14 @@ The gene expression analysis across the two Drosophila species showed difference
 **Figure 1 Differential Gene Expression in *D. melanogaster* and *Drosophila ananassae* at log2FoldChange >1 (pval<0.05)**
 
 N.B. We showed only two species data not the 8 species.
+
 #### 3.2 Sex dimorphism in gene expression of a Single Gene
 
+The gene expression of Gs1 across the two Drosophila species in the male and female.
 
-![Figure 2](https://github.com/Graze-Lab/SDE-of-species/blob/a6debd33fdac4c775caefa35520a9b277481016f/Figure1_MF_1FoldChange0.05.png)
+![Figure 2](https://github.com/Graze-Lab/SDE-of-species/blob/caabfc02d026ed712c79ddc7ff26fb72c65cdf96/Figure2_MF_of_Gene-Gs1.PNG)
 
-**Figure 2 Differential Gene Expression in *D. melanogaster* and *Drosophila ananassae* for a single gene (pval<0.05)**
+**Figure 2 Differential Gene Expression in *D. melanogaster* and *Drosophila ananassae* for a single gene Gs1 (pval<0.05)**
 
 N.B. We showed only two species data not the 8 species.
 
@@ -155,8 +157,24 @@ Finally, we are demonstrating the differentally expressed (382genes) immune-defe
 
 **N.B.** We removed 11 genes which expressed only in male or female. Giving inf for log2FoldChanges
 
-## Class demonstration for the SFB-students (last 3 Mins of the Presentation) 
-Navigate the gene expression for the students. Specifically, students will choose a single gene by symbol and they will able to see the gene expression of the gene within and across the Drosophila species.
+## Class demonstration for the SFB-students
+**Students will choose a single gene *(For example, SYMBOL == "Gs1")* by symbol and they will able to see the gene expression of the gene within and across two Drosophila species.**
+
+Please download the file [here](https://github.com/Graze-Lab/SDE-of-species/blob/8e75258557452868b1a995c6ec30e9528441aa69/B.Class_demo.Rmd)
+
+#### Class Exercise
+
+Run the file in R studio by click on **knit**
+Choose File **Final_IDs_dmel_nrc_gene_fc_logration_wb_mf** for **MODEL Organism**
+Choose File **Final_ID_dana_with_dmel_Ensemble_Symbol_removed_NA** for **NON-MODEL Organism**
+Generate Plot for the Gene
+
+####Optional Steps
+Change Gene Symbol in **STEP4**
+*Step4: Choose Your Gene and Replace in the SYMBOL == "Gs1"*
+
+
+
 We need a separate R markdown file for the students to walk through the code.
 
 
