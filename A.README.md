@@ -162,9 +162,9 @@ Finally, we are demonstrating the differentally expressed (382genes) immune-defe
 
 #### Please download the files from chat box.
 
-File 1:Class_demo.Rmd
-File 2:Final_IDs_dmel_nrc_gene_fc_logration_wb_mf.csv
-File 3:Final_ID_dana_with_dmel_Ensemble_Symbol_removed_NA.csv
+* File 1:Class_demo.Rmd [Class_Demo](https://github.com/Graze-Lab/SDE-of-species/blob/f6247482a51f836114c4f0e2f71a65a6c4c18022/B.Class_demo.Rmd)
+* File 2:Final_IDs_dmel_nrc_gene_fc_logration_wb_mf.csv [dmel](https://github.com/Graze-Lab/SDE-of-species/blob/f6247482a51f836114c4f0e2f71a65a6c4c18022/Final_IDs_dmel_nrc_gene_fc_logration_wb_mf.csv)
+* File 3:Final_ID_dana_with_dmel_Ensemble_Symbol_removed_NA.csv [dana](https://github.com/Graze-Lab/SDE-of-species/blob/f6247482a51f836114c4f0e2f71a65a6c4c18022/Final_ID_dana_with_dmel_Ensemble_Symbol_removed_NA.csv)
 
 #### Class Exercise
 
