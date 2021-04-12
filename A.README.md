@@ -156,7 +156,7 @@ Please download the files from **chat box** and keep all the flies in the same *
 
 #### Class Exercise
 
-1. Run the file in R studio by click on **knit**
+1. Run the `Class_demo.Rmd` file in R-studio by click on `knit` at the top.
 2. Choose File at First Step2 **Final_IDs_dmel_nrc_gene_fc_logration_wb_mf** for **MODEL Organism**
 3. Choose File at First Step3 **Final_ID_dana_with_dmel_Ensemble_Symbol_removed_NA** for **NON-MODEL Organism**
 4. Generate Plot for the Gene
