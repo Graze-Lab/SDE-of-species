@@ -64,7 +64,7 @@ We downloaded the data from the [NCBI_GSE99574](https://www.ncbi.nlm.nih.gov/geo
 ##### Step2: Data clean up
 The data was prepared by using [Calculate-Foldchanges-and-log2Foldchanges.R](https://github.com/Graze-Lab/SDE-of-species/blob/07233bc2d59f9917872254cdf0d2db359c155c2a/Calculate-Foldchanges-and-log2Foldchanges.R) at the begining of the foldchange and log2foldchange calculation. We used the `subset` fuction for the necessary data selection. The was checked number of times by using `head` and `nrow` in `R`. 
 
-#### Step3: Calculate Foldcahnges and log conversion
+#### Step3: Calculate Foldchanges and log conversion
 The second part of the [Calculate-Foldchanges-and-log2Foldchanges.R](https://github.com/Graze-Lab/SDE-of-species/blob/07233bc2d59f9917872254cdf0d2db359c155c2a/Calculate-Foldchanges-and-log2Foldchanges.R) performed the `t-test` to get the genes expressed diffirently in male and female (*p-val <0.05*). We used `row_t_equalvar` to create the t-test table of the `library(matrixTests)`. We used the `subset` to extract only the genes *p-val <0.05*. The fold change was calculated by using `foldchange` of `library(gtools)`. Finally, the log base2 was performed to get male and female gene expression. We used male as reference thus positive values are male biased and negative values are female biased in the col `log2FoldChangeMF`. We generated final `csv` file by using some basic merging of the data.
 ```
 clean_data <- cbind(df1_Sig,temp_fc,temp_logRatio)
@@ -103,7 +103,7 @@ ENSEMBL	| mean.nrc.f |	mean.nrc.m	| pvalue |	stderr |	foldchangesMF |	log2FoldCh
 --------|------------|--------------|--------|---------|----------------|----------------- |----------|-------
 FBgn0031214 | 2.520484397 |	19.40384798 |	0.000232543 |	2.161937704 |	7.698459868 |	2.944569853| 33163 | CG11374
 
-##### Step3: Ortholog Identification 
+##### Step5: Ortholog Identification 
 
 In the non-model organism the orthologs of the dmel need to add for the functional analysis and to identify gene level expression variation accross the species. (*We performed the dana orhtolog identification only but you can perform any species*) In case of the ortholog identification, we extracted orthologs based on the ensembl guideline from [ENSEMBL](https://useast.ensembl.org/index.html). In the [Ortholog_merge_for non model organism in R](https://github.com/Graze-Lab/SDE-of-species/blob/062f0e89f06b8a0d8deb9319a8832c4eebba1db5/Ortholog_merge_for%20non%20model%20organism%20in%20R.R) our *df1 will be the normalized (gene count/TPM/FPKM) file* is the file from **Step2 and Step3** and *df2 is the ortholog file* from [ENSEMBL](https://useast.ensembl.org/index.html). We removed all the dana genes which are not orthologus in dmel using `tidyr` function `drop_na`.
 
