@@ -122,7 +122,18 @@ ENSEMBL	| mean.nrc.f |	mean.nrc.m	| pvalue |	stderr |	foldchangesMF |	log2FoldCh
 FBgn0031214 | 2.520484397 |	19.40384798 |	0.000232543 |	2.161937704 |	7.698459868 |	2.944569853| 33163 | CG11374
 
 ##### Step3: Ortholog Identification 
-[Code to remove.py](https://github.com/Graze-Lab/SDE-of-species/blob/57e0384f8c35f6f8341bc2a6efccaa6bdac522dd/keep-common-values-matched-cols.py)
+
+In the non-model organism the orthologs of the dmel need to add for the functional analysis and to identify gene level expression variation accross the species. (*We performed the dana orhtolog identification only but you can perform any species*) In case of the ortholog identification, we extracted orthologs based on the ensembl guideline from [ENSEMBL](https://useast.ensembl.org/index.html). In the [Ortholog_merge_for non model organism in R](https://github.com/Graze-Lab/SDE-of-species/blob/062f0e89f06b8a0d8deb9319a8832c4eebba1db5/Ortholog_merge_for%20non%20model%20organism%20in%20R.R) our *df1 will be the normalized (gene count/TPM/FPKM) file* is the file from **Step2 and Step3** and *df2 is the ortholog file* from [ENSEMBL](https://useast.ensembl.org/index.html). We removed all the dana genes which are not orthologus in dmel using `tidyr` function `drop_na`.
+
+```
+df5 <- df3 %>% drop_na(ENSEMBL_DMel,SYMBOL_DMel) #both ENSEMBL and SYMBOL
+
+#how many genes are not getting orthologs in the model organism 
+lost_gene <- nrow(df1)-nrow(df5)
+lost_gene 
+```
+**N.B.** There some dana genes do not have dmel orthologs.
+
 ##### Step4: Calculate the significantly sex-biased gene expression
 ##### Step5:
 
