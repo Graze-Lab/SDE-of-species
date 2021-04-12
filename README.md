@@ -77,12 +77,14 @@ Show the clean data file Final with ID.
 
 ### Conclusion and Future direction:
 
-##Walk Through the Codes:
-We will add how to use the codes in a step-by-step manner. 
+# Walk Through the Codes:
+To determine the sex dimorphic gene expression at the constitutive level in Drosophila species we are using data from the [Yang et al. 2018](https://www.life-science-alliance.org/content/1/6/e201800156). In the analysis we need to concern about model and non-model organisms as *D. melanogater*(dmel) is the model organism we are using dmel as reference to perform the analysis for non-model species. We are adding geneID(ensembl ID ) and gene symbol of the dmel to all nonmodel (such as *Drosophila ananassae* dana).
 
 ##### Step1: Data download
-we used the `panda` for the duplication `columns.intersection`.
+We downloaded the data from the [NCBI_GSE99574](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE99574) in and unzip.
+
 ##### Step2: Data clean up
+
 ```
 #### Create Dataframe:
 import pandas as pd
