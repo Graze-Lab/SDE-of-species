@@ -1,37 +1,27 @@
-#### Final Submission April 12, 2021
-
 # Sex dimorphic constitutive gene expression in eight Drosophila species.
 Mursalin Khan & Krista Fincke
 ### Introduction:
-
 Quantitative genetics, molecular genetics, and evolutionary studies of different physiological and molecular pathways show remarkable differences between male and female physiology, morphology and behavioral phenotypes [Camila 2020](https://www.cell.com/cell-reports/pdf/S2211-1247(20)30776-2.pdf). Sex dimorphism has been reported in almost all dioecious organisms. These differences are caused by the differential expression of the genes which are regulated differently in sexes. The study of dimorphic gene expression is important to understand gene regulation, evolution, and development. In addition, sex difference is ubiquitous in many human diseases, such as autoimmune, cardiovascular, cancer, diabetes, neurological disorders [Camila 2020](https://www.cell.com/cell-reports/pdf/S2211-1247(20)30776-2.pdf). However, sex dimorphism is not well studied to precisely determine underlying the molecular mechanisms and associated biological factors [Camila 2020](https://www.cell.com/cell-reports/pdf/S2211-1247(20)30776-2.pdf).
 
 Recent advancement of RNA-seq technology provides the opportunity to understand sex dimorphism in the whole organisms on a transcriptome-wide scale. A number of studies reported the sex dimorphic gene expression in various organisms such as human, mice, fruit flies with or without treatments. Nevertheless, there is a deficit of knowledge in the comprehensive understanding of the constitutive sex dimorphic gene expression even in well-studied model systems. Additionally, it has been underexplored whether sex dimorphism is conserved or diverged across the species. A better understanding of sex dimorphism in related species will contribute to our overall understanding of the evolution of sex differences, as well as our understanding of variation in morphology, physiology and lifespan. To understand constitutive sex dimorphic (SD) gene expression at the species level, we will use publicly available differential gene expression (DEG) data of the fruit fly (GSE99574). 
 
-
 ### Materials and Methods:
 
 #### Dataset:
-
 We extracted the data from database of NCBI Gene Expression Omnibus, GSE99574. The data set contains polyA+ transcriptional profiling of sexed adult tissues/body parts and whole adults of eight Drosophila species: *Drosophila melanogaster* (FBsp00000001) from two strains [w1118 (FBst0005905) and Oregon-R (FBst0025211)], *Drosophila yakuba* (FBsp00000254), *Drosophila ananassae* (FBsp00000052), *Drosophila pseudoobscura* (FBsp00000201), *Drosophila persimilis* (FBsp00000188), *Drosophila willistoni* (FBsp00000253), *Drosophila mojavensis* (FBsp00000160), and *Drosophila virilis* (FBsp00000251).There are 856 samples from different body parts of the Drosophila species including the whole body. In our analysis we used the RNA-seq data of the whole body for the Drosophila species.
 
 The research team that provided the data used similar RNA-seq experiments to create a whole database for sex-associated genes across 8 species. They used the **‘TRANSCRIPTOMIC’** library source, **‘ILLUMINA’** platform, and **‘RNA-Seq’** library strategy. All selected groups of rawRNA-seq data sets were processed through the same pipeline. The raw RNA-seq data mapped to corresponding reference genomes by **HISAT2** (version 2.0.5) under the guidance of gene re-annotation from Yang et al. 2018. **HTSeqcount** (version 0.9.1) was employed to quantify the reads uniquely aligned to each gene so that one read would not be assigned to several paralogs. Read counts were merged by sample so that technical replicates would be integrated. The normalized read counts and identified differentially expressed genes between female and male samples in each group by **DESeq2** (version 1.20.0). They also normalized read counts into the TPM values (Transcript per Million mapped reads). 
 
 #### Identification of the Sex dimorphic Genes:
-
 In our analysis, we used the normalized read counts (NRC) to identify the significantly sex-biased genes in the Drosophila species. We extracted the whole body normalized read counts for the 8 species along with Ensembl ID for the genes. We defined the sex-biased genes at p-value <0.05 (t-test) and calculated the foldchange for the significantly different genes. In addition, we calculated the log2FoldChange of the genes to identify male and female genes for each species (Create Clean_Up_data.R).
 
 #### Data preparation:
-
-To perform the function analysis we used the bitr package in R convert ENSEMBL ID to Gene Symbol and Entrez. We will lose some genes here because not all IDs will be converted. For the non-model species ( 7 other species except dmel) we added the Drosophila melanogaster based orthologs to perform the functional analysis.
+To perform the function analysis we used the bitr package in R convert ENSEMBL ID to Gene Symbol and Entrez. We will lose some genes here because not all IDs will be converted. For the non-model species ( 7 other species except dmel), we added the Drosophila melanogaster based orthologs to perform the functional analysis.
 
 #### Data Representation:
-
-We used the male and female biased genes to show the sex dimorphic expression across the species. (Krista Task2).
-We generated scripts to know the sex specific expression of the specific gene within and across the species. (Krista Task1)
+We used the male and female biased genes to show the sex dimorphic expression across the species. We generated scripts to know the sex specific expression of the specific gene within and across the species.
 
 #### Immune Gene Analysis:
-
 The immune response in  dioecious organisms has been reported to be sex dimorphic for number of diseases such as bacterial infection, viral diseases, fungal infection, cancer, autoimmune diseases, cardiovascular and neural diseases. We extracted the immune and defense related genes from Flybase for Drosophila melanogaster and other species to understand the immune gene expression variation across species. We performed the gene enrichment analysis to see the enriched GO, GSEA and KEGG pathways for immune genes to have clear understanding of the process at constitutive level. 
 
 ### Results:
@@ -160,7 +150,7 @@ Finally, we are demonstrating the differentally expressed (382genes) immune-defe
 ## Class demonstration for the SFB-students
 **Students will choose a single gene *(For example, SYMBOL == "Gs1")* by symbol and they will able to see the gene expression of the gene within and across two Drosophila species.**
 
-#### Please download the files from chat box.
+| Please download the files from **chat box** and keep all the flies in the same **folder** |
 
 * File 1:Class_demo.Rmd [Class_Demo](https://github.com/Graze-Lab/SDE-of-species/blob/f6247482a51f836114c4f0e2f71a65a6c4c18022/B.Class_demo.Rmd)
 * File 2:Final_IDs_dmel_nrc_gene_fc_logration_wb_mf.csv [dmel](https://github.com/Graze-Lab/SDE-of-species/blob/f6247482a51f836114c4f0e2f71a65a6c4c18022/Final_IDs_dmel_nrc_gene_fc_logration_wb_mf.csv)
