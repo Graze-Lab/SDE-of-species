@@ -1,17 +1,38 @@
-#ENSEMBL to Gene Symbol and Entrez
+#ENSEMBL to Gene Symbol and Entrez Conversion 
+#Specifically for the model organism as we need to add orthologs in the non-model organism
+#you can use it for any species 
 
+#################################################################################################################
+
+#VVI READ IT
+#For KEGG pathway enrichment using the gseKEGG() function, we need to convert id types. 
+#We can use the bitr function for this (included in clusterProfiler). 
+#It is normal for this call to produce some messages / warnings.
+#In the bitr function, the param fromType should be the same as keyType from the gseGO function above (the annotation source).
+#This param is used again in the next two steps: creating dedup_ids and df2.
+#toType in the bitr function has to be one of the available options from keyTypes(org.Dm.eg.db) and must map to one of 'kegg',
+#'ncbi-geneid', 'ncib-proteinid' or 'uniprot' because gseKEGG() only accepts one of these 4 options as it's keytype parameter.
+#In the case of org.Dm.eg.db, none of those 4 types are available,
+#but 'ENTREZID' are the same as ncbi-geneid for org.Dm.eg.db so we use this for toType.
+
+#################################################################################################################
+
+#load necessary library
+library("org.Dm.eg.db") # we are using specifically memalogater database 
+#optionals 
 library(enrichplot)
 library(clusterProfiler)
 library(ggplot2)
-library("org.Dm.eg.db")
 library(DOSE)
 library(pathview)
 
-#prepare Input data
+#Prepare Input data
 
-df1 <- read.csv(file.choose())
+df1 <- read.csv(file.choose()) # choose the data file 
 head(df1)
 nrow(df1)
+
+#rename the headers 
 
 names(df1)[1] <- "ENSEMBL"
 names(df1)[2] <- "SYMBOL"
@@ -22,8 +43,9 @@ names(df1)[10] <- "ENSEMBL"
 names(df1)[11] <- "SYMBOL"
 names(df1)[8] <- "log2FoldChange"
 
-# we want the log2 fold change 
-original_gene_list <- df1$log2MFratio
+# We want the log2 fold change # we will keep other col as well
+
+original_gene_list <- df1$log2MFratio #make sure name is matching 
 
 # name the vector
 #names(original_gene_list) <- df$X
@@ -32,31 +54,14 @@ names(original_gene_list) <- df1$ENSEMBL
 gene_list<-na.omit(original_gene_list)
 
 # sort the list in decreasing order (required for clusterProfiler)
-gene_list = sort(gene_list, decreasing = TRUE)
-head(gene_list)
-head(original_gene_list)
 
-#Gene Set Enrichment
+gene_list = sort(gene_list, decreasing = TRUE) # it will help you for heatmap and functional analysis 
+head(gene_list) #check it LIST(matrix)
+head(original_gene_list) #check it VECTOR
+
 #Check which options are available with the keytypes command, for example 
-keytypes(org.Dm.eg.db)
+keytypes(org.Dm.eg.db) # you can perform anytype WE will use ENTERZ and SYMBOL
 
-#PubMed trend of enriched terms
-
-#######################################################################################
-
-#KEGG Gene Set Enrichment Analysis
-
-#VVVVVI READ
-#For KEGG pathway enrichment using the gseKEGG() function, we need to convert id types. 
-#We can use the bitr function for this (included in clusterProfiler). 
-#It is normal for this call to produce some messages / warnings.
-#In the bitr function, the param fromType should be the same as keyType from the gseGO function above (the annotation source).
-#This param is used again in the next two steps: creating dedup_ids and df2.
-
-#toType in the bitr function has to be one of the available options from keyTypes(org.Dm.eg.db) and must map to one of 'kegg',
-#'ncbi-geneid', 'ncib-proteinid' or 'uniprot' because gseKEGG() only accepts one of these 4 options as it's keytype parameter.
-#In the case of org.Dm.eg.db, none of those 4 types are available,
-#but 'ENTREZID' are the same as ncbi-geneid for org.Dm.eg.db so we use this for toType.
 
 #As our intial input, we use original_gene_list which we created above.
 
@@ -108,4 +113,6 @@ df3$SYMBOL = dedup_ids$SYMBOL
 names(df3)[8] <- "ENTREZID"
 head(df3)
 
+#set directory and save the file 
+setwd("C:/Users/Mursalin/Desktop/SAGD Pub 1/SAGD Data sets_current/GO_Erichment/data for GSEA")
 write.csv(df3, "Final_IDs_dmel_nrc_gene_fc_logration_wb_mf.csv", row.names = F)
