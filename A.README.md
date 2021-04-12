@@ -148,10 +148,8 @@ Finally, we are demonstrating the differentally expressed (382genes) immune-defe
 **N.B.** We removed 11 genes which expressed only in male or female. Giving inf for log2FoldChanges
 
 ## Class demonstration for the SFB-students
-**Students will choose a single gene *(For example, SYMBOL == "Gs1")* by symbol and they will able to see the gene expression of the gene within and across two Drosophila species.**
-
-| Please download the files from **chat box** and keep all the flies in the same **folder** |
-
+Please download the files from **chat box** and keep all the flies in the same **folder**
+------------------------------------------------------------------------------------------
 * File 1:Class_demo.Rmd [Class_Demo](https://github.com/Graze-Lab/SDE-of-species/blob/f6247482a51f836114c4f0e2f71a65a6c4c18022/B.Class_demo.Rmd)
 * File 2:Final_IDs_dmel_nrc_gene_fc_logration_wb_mf.csv [dmel](https://github.com/Graze-Lab/SDE-of-species/blob/f6247482a51f836114c4f0e2f71a65a6c4c18022/Final_IDs_dmel_nrc_gene_fc_logration_wb_mf.csv)
 * File 3:Final_ID_dana_with_dmel_Ensemble_Symbol_removed_NA.csv [dana](https://github.com/Graze-Lab/SDE-of-species/blob/f6247482a51f836114c4f0e2f71a65a6c4c18022/Final_ID_dana_with_dmel_Ensemble_Symbol_removed_NA.csv)
@@ -164,6 +162,8 @@ Finally, we are demonstrating the differentally expressed (382genes) immune-defe
 4. Generate Plot for the Gene
 
 #### Optional
+
+**Students will choose a single gene *(For example, SYMBOL == "Gs1")* by symbol and they will able to see the gene expression of the gene within and across two Drosophila species.**
 
 * Change Gene Symbol in **STEP4**
 **Step4: Choose Your Gene and Replace in the SYMBOL == "Gs1"**
