@@ -65,5 +65,8 @@ tail(df5)
 nrow(df5)
 lost_gene <- nrow(df1)-nrow(df5)
 lost_gene #how many genes are not getting orthologs in the model organism 
-#write.csv(df5, "Background_Final_Ana_with_Dmel_Ensemble_Symbol_removed_NA.csv", row.names = F)
+
+#set directory and save the file 
+setwd("C:/Users/Mursalin/Desktop/SAGD Pub 1/SAGD Data sets_current/GO_Erichment/data for GSEA")
 write.csv(df5, "Final_ID_dana_with_dmel_Ensemble_Symbol_removed_NA.csv", row.names = F)
+#write.csv(df5, "Background_Final_Ana_with_Dmel_Ensemble_Symbol_removed_NA.csv", row.names = F)
