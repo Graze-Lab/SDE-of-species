@@ -173,15 +173,12 @@ File 3:Final_ID_dana_with_dmel_Ensemble_Symbol_removed_NA.csv
 3. Choose File at First Step3 **Final_ID_dana_with_dmel_Ensemble_Symbol_removed_NA** for **NON-MODEL Organism**
 4. Generate Plot for the Gene
 
-####Optional
-Change Gene Symbol in **STEP4**
-*Step4: Choose Your Gene and Replace in the SYMBOL == "Gs1"*
+#### Optional
 
+* Change Gene Symbol in **STEP4**
+**Step4: Choose Your Gene and Replace in the SYMBOL == "Gs1"**
 
-
-We need a separate R markdown file for the students to walk through the code.
-
-
+You can download the code [Here](https://github.com/Graze-Lab/SDE-of-species/blob/e0ae9fbb3cb51d298437bb09a541c4dd70a46b83/Specific-Gene-Diff-Exp.R)
 
 
 
