@@ -2,13 +2,9 @@
 
 # Sex dimorphic constitutive gene expression in eight Drosophila species.
 Mursalin Khan & Krista Fincke
-
-### Abstract:
-
 ### Introduction:
 
-Quantitative genetics, molecular genetics, and evolutionary studies of different physiological and molecular pathways show remarkable differences between male and female physiology, morphology and behavioral phenotypes. (Klein & Flanagan, 2016; Meier et al., 2009; Kraaijeveld et al., 2008; Scotland et al., 2011, Fish, 2008). The sex dimorphism has been reported in all most all dioecious organism. These differences are caused by the differential expression of the genes which are regulated differently in sexes. The study of the dimorphic gene expression is important to understand gene regulation, evolution, development. In addition, sex difference is ubiquitous in many human diseases, such as autoimmune, cardiovascular, cancer, diabetes, neurological disorders [Camila 2020]. However, the sex dimorphism is not well studied to precisely determine underlying the molecular mechanisms and associated biological factors [Camila 2020].
-
+Quantitative genetics, molecular genetics, and evolutionary studies of different physiological and molecular pathways show remarkable differences between male and female physiology, morphology and behavioral phenotypes [Camila 2020](https://www.cell.com/cell-reports/pdf/S2211-1247(20)30776-2.pdf). The sex dimorphism has been reported in all most all dioecious organism. These differences are caused by the differential expression of the genes which are regulated differently in sexes. The study of the dimorphic gene expression is important to understand gene regulation, evolution, development. In addition, sex difference is ubiquitous in many human diseases, such as autoimmune, cardiovascular, cancer, diabetes, neurological disorders [Camila 2020](https://www.cell.com/cell-reports/pdf/S2211-1247(20)30776-2.pdf). However, the sex dimorphism is not well studied to precisely determine underlying the molecular mechanisms and associated biological factors [Camila 2020](https://www.cell.com/cell-reports/pdf/S2211-1247(20)30776-2.pdf).
 
 Recent advancement of the RNA-seq technology provide the opportunity to understand the sex dimorphism in the whole organisms on a transcriptome-wide scale. Number of studies reported the sex dimorphic gene expression in various organisms such as human, mice, fruit flies with or without treatments. Nevertheless, there is a deficit of knowledge in the comprehensive understanding of the constitutive sex dimorphic gene expression even in well-studied model systems. Besides, it has been underexplored whether the sex dimorphism is conserved or diverged across the species. A better understanding of sex dimorphism in related species will contribute to our overall understanding of the evolution of sex differences, as well as our understanding of variation in morphology, physiology and lifespan.To understand constitutive sex dimorphic (SD) gene expression in species level, we will use publicly available deferential gene expression (DEG) data of the fruit fly (GSE99574). 
 
@@ -84,12 +80,47 @@ To determine the sex dimorphic gene expression at the constitutive level in Dros
 We downloaded the data from the [NCBI_GSE99574](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE99574) in and unzip.
 
 ##### Step2: Data clean up
+The data was prepared by using [Calculate-Foldchanges-and-log2Foldchanges.R](https://github.com/Graze-Lab/SDE-of-species/blob/07233bc2d59f9917872254cdf0d2db359c155c2a/Calculate-Foldchanges-and-log2Foldchanges.R) at the begining of the foldchange and log2foldchange calculation. We used the `subset` fuction for the necessary data selection. The was checked number of times by using `head` and `nrow` in `R`. 
+
+#### Step3: Calculate Foldcahnges and log conversion
+The second part of the [Calculate-Foldchanges-and-log2Foldchanges.R](https://github.com/Graze-Lab/SDE-of-species/blob/07233bc2d59f9917872254cdf0d2db359c155c2a/Calculate-Foldchanges-and-log2Foldchanges.R) performed the `t-test` to get the genes expressed diffirently in male and female (*p-val <0.05*). We used `row_t_equalvar` to create the t-test table of the `library(matrixTests)`. We used the `subset` to extract only the genes *p-val <0.05*. The fold change was calculated by using `foldchange` of `library(gtools)`. Finally, the log base2 was performed to get male and female gene expression. We used male as reference thus positive values are male biased and negative values are female biased in the col `log2FoldChangeMF`. We generated final `csv` file by using some basic merging of the data.
+```
+clean_data <- cbind(df1_Sig,temp_fc,temp_logRatio)
+```
+**N.B.** Remove the missing values part is necessary for [Yang et al. 2018](https://www.life-science-alliance.org/content/1/6/e201800156) as they have a new Reannotation ID YO annotation is not found in all Ensenble annotation. Do not need for regular Ensembl annotation file.
+
+##### Step4: Gene ID Conversion 
+
+Now we have the file like the following.
+
+ENSEMBL	| mean.nrc.f |	mean.nrc.m	| pvalue |	stderr |	foldchangesMF |	log2FoldChangeMF
+--------|------------|--------------|--------|---------|----------------|-----------------
+FBgn0031214 | 2.520484397 |	19.40384798 |	0.000232543 |	2.161937704 |	7.698459868 |	2.944569853
+
+We need to add the Gene Symbol and Entrez to perform fuctional analysis. We used the [gene-id-conversion.R](https://github.com/Graze-Lab/SDE-of-species/blob/07233bc2d59f9917872254cdf0d2db359c155c2a/gene-id-conversion.R). For the dosophila we used the `library("org.Dm.eg.db")` of the `Annotationdbi`. *(You need to check if you want to use other organism. Annotationdbi can also create annotationdbi for non-model organism.)* We checked the id availability by using `keytypes(org.Dm.eg.db)` and finally converted the id and kept only matched IDSv by 
+```
+ids<-bitr(names(original_gene_list), fromType = "ENSEMBL", toType = "ENTREZID", OrgDb=org.Dm.eg.db)
 
 ```
-#### Create Dataframe:
-import pandas as pd
-import numpy as np
+It is worth to mention there will be some (specially for non-model) duplicated values for the ENTREZID thus we removed the duplicates `
+
 ```
+#remove duplicate IDS (here I use "ENSEMBL", but it should be whatever was selected as keyType)
+dedup_ids = ids[!duplicated(ids[c("ENSEMBL")]),]
+head(dedup_ids)
+df2 = df1[df1$ENSEMBL %in% dedup_ids$ENSEMBL,] #VVI match and remove like awk
+head(df2)
+nrow(df2)
+nrow(df1)
+lostgene <- (nrow(df1)-nrow(df2))
+```
+
+**N.B.** `ENTREZID` are the same as `ncbi-geneid` for `org.Dm.eg.db` so we use this for toTypeAs. Read the box in the [code](https://github.com/Graze-Lab/SDE-of-species/blob/07233bc2d59f9917872254cdf0d2db359c155c2a/gene-id-conversion.R).
+
+ENSEMBL	| mean.nrc.f |	mean.nrc.m	| pvalue |	stderr |	foldchangesMF |	log2FoldChangeMF | ENTREZID | SYMBOL
+--------|------------|--------------|--------|---------|----------------|----------------- |----------|-------
+FBgn0031214 | 2.520484397 |	19.40384798 |	0.000232543 |	2.161937704 |	7.698459868 |	2.944569853| 33163 | CG11374
+
 ##### Step3: Ortholog Identification 
 [Code to remove.py](https://github.com/Graze-Lab/SDE-of-species/blob/57e0384f8c35f6f8341bc2a6efccaa6bdac522dd/keep-common-values-matched-cols.py)
 ##### Step4: Calculate the significantly sex-biased gene expression
