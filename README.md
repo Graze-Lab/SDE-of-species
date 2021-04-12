@@ -40,6 +40,7 @@ The immune response in the diecious organism has been reported sex dimorphic for
 The gene expression analysis across the two Drosophila species showed difference across the male and female biased gene expression.
 
 ![Figure 1 Differential Gene Expression in *D. melanogaster* and *Drosophila ananassae* at log2FoldChange >1 (pval<0.05)](https://github.com/Graze-Lab/SDE-of-species/blob/a6debd33fdac4c775caefa35520a9b277481016f/Figure1_MF_1FoldChange0.05.png)
+
 **Figure 1 Differential Gene Expression in *D. melanogaster* and *Drosophila ananassae* at log2FoldChange >1 (pval<0.05)**
 
 N.B. We showed only two species data not the 8 species.
@@ -47,7 +48,9 @@ N.B. We showed only two species data not the 8 species.
 
 
 ![Figure 2] (https://github.com/Graze-Lab/SDE-of-species/blob/a6debd33fdac4c775caefa35520a9b277481016f/Figure1_MF_1FoldChange0.05.png)
+
 **Figure 2 Differential Gene Expression in *D. melanogaster* and *Drosophila ananassae* for a single gene (pval<0.05)**
+
 N.B. We showed only two species data not the 8 species.
 
 # Walk Through the Codes:
