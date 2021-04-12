@@ -37,45 +37,18 @@ The immune response in the diecious organism has been reported sex dimorphic for
 ### Results:
 
 #### 3.1 Sex dimorphism in gene expression
-The gene expression analysis across the three Drosophila species found the marked difference across the male and female biased gene expression.
-In general, the analysis demonstrates the male and female biased constitutive GEs in not conserved across the closed related species.
+The gene expression analysis across the two Drosophila species showed difference across the male and female biased gene expression.
 
 ![Figure 1 Differential Gene Expression in *D. melanogaster* and *Drosophila ananassae* at log2FoldChange >1 (pval<0.05)](https://github.com/Graze-Lab/SDE-of-species/blob/a6debd33fdac4c775caefa35520a9b277481016f/Figure1_MF_1FoldChange0.05.png)
-
 **Figure 1 Differential Gene Expression in *D. melanogaster* and *Drosophila ananassae* at log2FoldChange >1 (pval<0.05)**
 
-#### 3.2 Sex dimorphism in gene expression of a Single Gene (Krista Task1)
-Figure 2
-
-#### Heatmap of the DE immune genes in the dmel
+N.B. We showed only two species data not the 8 species.
+#### 3.2 Sex dimorphism in gene expression of a Single Gene
 
 
-
-#### 3.3 Enrichment of the Gene Ontology terms (Immune Genes)
-Figure 3
-In our functional studies, we identified the enriched gene ontology terms for male and female in three species (Figure 4).
-
-#### 3.4 Cluster and Network Enrichment (Immune Genes)
-Our functional study of the enriched networks showed the differences in male and female for all the three species (Figure 5).
-
-#### 3.5 Gene Set Enrichment Analysis (Immune Genes)
-We performed the gene set enrichment analysis to identify the enriched gene sets in sexes for the D. melanogaster, D. simulans and D. yakuba (Figure 6). 
-
-#### 3.6 Enriched KEGG Pathways 
-To detected the differentially expressed pathways in the male and female across the species we performed pathway enrichment analysis (Figure 7).
-
-#### Table 1:
-Show the clean data file Final with ID.
-#### Figure 1:
-#### Figure 2:
-#### Figure 3:
-#### Figure 4:
-#### Figure 5:
-
-### Discussion:
-
-
-### Conclusion and Future direction:
+![Figure 2] (https://github.com/Graze-Lab/SDE-of-species/blob/a6debd33fdac4c775caefa35520a9b277481016f/Figure1_MF_1FoldChange0.05.png)
+**Figure 2 Differential Gene Expression in *D. melanogaster* and *Drosophila ananassae* for a single gene (pval<0.05)**
+N.B. We showed only two species data not the 8 species.
 
 # Walk Through the Codes:
 To determine the sex dimorphic gene expression at the constitutive level in Drosophila species we are using data from the [Yang et al. 2018](https://www.life-science-alliance.org/content/1/6/e201800156). In the analysis we need to concern about model and non-model organisms as *D. melanogater*(dmel) is the model organism we are using dmel as reference to perform the analysis for non-model species. We are adding geneID(ensembl ID ) and gene symbol of the dmel to all nonmodel (such as *Drosophila ananassae* dana).
